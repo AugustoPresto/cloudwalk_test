@@ -10,6 +10,7 @@ class FetchGithubReposJob
     raise "Failed to fetch repositories from GitHub API (status code: #{response.code})" if response.code != 200
 
     repositories = JSON.parse(response.body)
+    repo_names = repositories.map { |repo| repo['name'] }
 
     repositories.each do |repo_data|
       repo = user.repositories.find_or_initialize_by(name: repo_data['name'])
@@ -17,6 +18,7 @@ class FetchGithubReposJob
       repo.save!
     end
 
+    user.repositories.where.not(name: repo_names).destroy_all
   rescue StandardError => e
     Rails.logger.error("An error ocurred while fetching GitHub repositories for user #{username}: #{e.message}")
   end
