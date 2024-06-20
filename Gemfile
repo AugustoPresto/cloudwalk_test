@@ -43,9 +43,19 @@ gem 'rubocop', '~> 1.64', require: false # Check code good practices
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'rspec-rails', '~> 6.1.3' # Unit tests
+  gem 'factory_bot_rails', '~> 6.4.3' # So we create fake models instances
+  gem 'faker', '~> 3.4.1' # Use fake data
 end
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+end
+
+group :test do
+  gem 'database_cleaner-active_record', '~> 2.1.0' # Helps cleaning test database
+  gem 'shoulda-matchers', '~> 6.2.0' # Provides RSpec matchers to test common functionalities
+  gem 'vcr', '~> 6.2.0' # Records HTTP interactions
+  gem 'webmock', '~> 3.23.1' # Stub HTTP requests in tests
 end
