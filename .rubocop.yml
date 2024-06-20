@@ -1,0 +1,12 @@
+AllCops:
+  SuggestExtensions: false
+  Exclude:
+    - 'Gemfile'
+    - 'db/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'bin/*'
+    - 'config/**/*'
+    - 'log/**/*'
+    - 'tmp/**/*'
+  NewCops: enable
