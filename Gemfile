@@ -38,6 +38,7 @@ gem "bootsnap", require: false
 gem 'httparty', '~> 0.22.0' # HTTP resquests
 gem 'sidekiq', '~> 7.2.4' # Background jobs
 gem 'redis' # DB to store sidekiq jobs
+gem 'rubocop', '~> 1.64', require: false # Check code good practices
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
