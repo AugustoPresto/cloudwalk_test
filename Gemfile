@@ -58,4 +58,5 @@ group :test do
   gem 'shoulda-matchers', '~> 6.2.0' # Provides RSpec matchers to test common functionalities
   gem 'vcr', '~> 6.2.0' # Records HTTP interactions
   gem 'webmock', '~> 3.23.1' # Stub HTTP requests in tests
+  gem 'rspec-sidekiq' # Adds Sidekiq matchers
 end
