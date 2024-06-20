@@ -6,11 +6,14 @@ class UsersController < ApplicationController
     response = HTTParty.get("https://api.github.com/users/#{username}/repos")
     repositories = JSON.parse(response.body)
 
-    repositories.each do |repo|
-      user.repositories.find_or_create_by(
-        name: repo['name'],
-        stars: repo['stargazers_count']
-      )
+    repositories.each do |repo_data|
+      repo = user.repositories.find_or_initialize_by(name: repo_data['name'])
+      repo.stars = repo_data['stargazers_count']
+      repo.save!
     end
+
+    render json: { message: 'User repositories have been fetched and stored.' }, status: :ok
+  rescue StandardError => e
+    render json: { error: e.message }, status: :unprocessable_entity
   end
 end
