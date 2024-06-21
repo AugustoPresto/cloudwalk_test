@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
-  describe 'POST /users' do
+  describe 'POST /users', :vcr do
     context 'with valid username' do
       it "creates a user and triggers the background job" do
         expect {
-          post users_path, params: { username: 'octocat' }
+          post users_path, params: { username: 'AugustoPresto' }
         }.to change(User, :count).by(1)
 
-        expect(FetchGithubReposJob).to have_enqueued_sidekiq_job('octocat')
+        expect(FetchGithubReposJob).to have_enqueued_sidekiq_job('AugustoPresto')
         expect(response).to have_http_status(:ok)
       end
     end
