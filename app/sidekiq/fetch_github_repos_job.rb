@@ -16,7 +16,7 @@ class FetchGithubReposJob
 
     remove_deleted_repositories(user, repo_names)
   rescue StandardError => e
-    Rails.logger.error("An error ocurred while fetching GitHub repositories for user #{username}: #{e.message}")
+    Rails.logger.error("An error occurred while fetching GitHub repositories for user #{username}: #{e.message}")
   end
 
   private
