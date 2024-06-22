@@ -52,7 +52,7 @@ Ensure you have the following installed:
 
 4. **Start Redis**
 
-    Ensure Redis is running on your system. You can start Redis using:
+    Ensure Redis is running on your system. Check [Redis documentation](https://github.com/redis/redis-rb) to set up properly. You can start Redis using:
 
     ```
     redis-server
@@ -60,7 +60,7 @@ Ensure you have the following installed:
 
 5. **Start Sidekiq**
 
-    Start the Sidekiq worker.
+    Remember to install [Sidekiq gem](https://github.com/sidekiq/sidekiq) correctly and start the Sidekiq worker.
 
     ```
     bundle exec sidekiq
@@ -98,22 +98,20 @@ Example using Postman:
 1. Open Postman.
 2. Create a new POST request.
 3. Enter the request URL: http://localhost:3000/users.
-4. Go to the "Body" tab.
-5. Select the "x-www-form-urlencoded" option.
-6. Add a key username with the value of the GitHub username you want to fetch.
-7. Click "Send".
+4. Go to the "Params" tab.
+5. Add a key `username` with the value of the GitHub username you want to fetch.
+6. Click "Send".
 
 Example using Insomnia:
 
 1. Open Insomnia.
 2. Create a new POST request.
 3. Enter the request URL: http://localhost:3000/users.
-4. Go to the "Body" tab.
-5. Select "Form URL Encoded".
-6. Add a key username with the value of the GitHub username you want to fetch.
-7. Click "Send".
+4. Go to the "Query" tab.
+5. Add a key `username` with the value of the GitHub username you want to fetch.
+6. Click "Send".
 
-In both Postman and Insomnia, you should see a JSON response like this in the the Preview area if response code is 200:
+In all cases, you should see a JSON response like this if response code is 200:
 
   ```
   {
