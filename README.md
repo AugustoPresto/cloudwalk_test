@@ -52,7 +52,7 @@ Ensure you have the following installed:
 
 4. **Start Redis**
 
-  Ensure Redis is running on your system. You can start Redis using:
+    Ensure Redis is running on your system. You can start Redis using:
 
     ```
     redis-server
@@ -60,7 +60,7 @@ Ensure you have the following installed:
 
 5. **Start Sidekiq**
 
-  Start the Sidekiq worker.
+    Start the Sidekiq worker.
 
     ```
     bundle exec sidekiq
@@ -76,9 +76,9 @@ Ensure you have the following installed:
 
 Ensure you have the necessary environment variables set up in your application. You can use a `.env` file in the root of the app for local development:
 
-    ```
-    REDIS_URL=redis://localhost:6379/0
-    ```
+  ```
+  REDIS_URL=redis://localhost:6379/0
+  ```
 
 
 ## Usage
@@ -89,9 +89,9 @@ To create a user and fetch their repositories, make a POST request to the /users
 
 Example using `curl`:
 
-    ```
-    curl -X POST http://localhost:3000/users -d "username=githubusername"
-    ```
+  ```
+  curl -X POST http://localhost:3000/users -d "username=githubusername"
+  ```
 
 Example using Postman:
 
