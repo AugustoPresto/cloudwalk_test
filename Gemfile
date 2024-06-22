@@ -46,6 +46,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.1.3' # Unit tests
   gem 'factory_bot_rails', '~> 6.4.3' # So we create fake models instances
   gem 'faker', '~> 3.4.1' # Use fake data
+  gem 'dotenv-rails' # Saves environment variables on .env files
 end
 
 group :development do
