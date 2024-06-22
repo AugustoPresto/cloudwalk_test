@@ -99,6 +99,10 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
+    dotenv (3.1.2)
+    dotenv-rails (3.1.2)
+      dotenv (= 3.1.2)
+      railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.0)
     factory_bot (6.4.6)
@@ -279,6 +283,7 @@ DEPENDENCIES
   bootsnap
   database_cleaner-active_record (~> 2.1.0)
   debug
+  dotenv-rails
   factory_bot_rails (~> 6.4.3)
   faker (~> 3.4.1)
   httparty (~> 0.22.0)
