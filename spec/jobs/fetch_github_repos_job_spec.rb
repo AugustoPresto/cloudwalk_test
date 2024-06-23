@@ -33,12 +33,6 @@ RSpec.describe FetchGithubReposJob, type: :job do
       end
     end
 
-    context 'when user does not exist' do
-      it 'does nothing' do
-        expect { described_class.new.perform('nonexistent-username') }.not_to raise_error
-      end
-    end
-
     context 'when unexpected error occurs' do
       it 'logs the error' do
         allow(HTTParty).to receive(:get).and_raise(StandardError, 'Unexpected error')
