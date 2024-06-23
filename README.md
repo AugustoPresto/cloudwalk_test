@@ -9,7 +9,45 @@ This Ruby on Rails application allows users to input their GitHub username and f
 - Background job processing using Sidekiq.
 - Health check endpoint for monitoring.
 
-## Requirements
+
+## Production Link and Usage Examples
+
+### Production Link
+You can access the application in production at: [https://cloudwalk-test.osc-fr1.scalingo.io/](https://cloudwalk-test.osc-fr1.scalingo.io/)
+
+### Usage Examples
+
+#### Using Postman
+
+1. Open Postman and set the request type to `POST`.
+2. Set the request URL to `https://cloudwalk-test.osc-fr1.scalingo.io/users`.
+3. Go to the "Params" tab.
+4. Add a key `username` with the value being the GitHub username you want to fetch repositories for.
+5. Click `Send` and check the response.
+
+#### Using Insomnia
+
+1. Open Insomnia and create a new `POST` request.
+2. Set the request URL to `https://cloudwalk-test.osc-fr1.scalingo.io/users`.
+3. Go to the "Query" tab.
+4. In the request body, select `Form URL Encoded` and add a key `username` with the value being the GitHub username you want to fetch repositories for.
+5. Click `Send` and check the response.
+
+### Example Request
+
+  ```
+  curl -X POST https://cloudwalk-test.osc-fr1.scalingo.io/users -d "username=valid-github-username"
+  ```
+
+In all cases, you should see a JSON response like this if response code is 200:
+
+  ```
+  {
+    "message": "User repositories fetched and saved."
+  }
+  ```
+
+## Requirements for using locally
 
 - Ruby 3.2.0
 - Rails 7.1.3
