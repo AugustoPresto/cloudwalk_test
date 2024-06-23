@@ -8,12 +8,12 @@ RSpec.describe UsersController, type: :controller do
 
     before do
       allow(FetchGithubReposJob).to receive(:perform_async)
-      allow(HTTParty).to receive(:get).and_return(double('response', code: 200))
+      allow(GithubUsernameValidator).to receive(:check).and_return(true)
     end
 
     context 'with valid username' do
       before do
-        allow(HTTParty).to receive(:get).with("https://api.github.com/users/#{valid_username}").and_return(double('response', code: 200))
+        allow(GithubUsernameValidator).to receive(:check).with(valid_username).and_return(true)
       end
 
       it 'creates a user if it does not exist' do
@@ -57,7 +57,7 @@ RSpec.describe UsersController, type: :controller do
 
     context 'when GitHub username does not exist' do
       before do
-        allow(HTTParty).to receive(:get).with("https://api.github.com/users/#{nonexistent_username}").and_return(double('response', code: 404))
+        allow(GithubUsernameValidator).to receive(:check).with(nonexistent_username).and_raise("GitHub username '#{nonexistent_username}' not found")
       end
 
       it 'raises an error if GitHub username is not found' do
@@ -69,7 +69,7 @@ RSpec.describe UsersController, type: :controller do
 
     context 'with unexpected error' do
       before do
-        allow(HTTParty).to receive(:get).with("https://api.github.com/users/#{valid_username}").and_return(double('response', code: 200))
+        allow(GithubUsernameValidator).to receive(:check).with(valid_username).and_return(true)
       end
 
       it 'handles unexpected errors gracefully' do
